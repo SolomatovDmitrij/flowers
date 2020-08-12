@@ -1,0 +1,17 @@
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.menu a {
+    text-decoration: none;
+    background-color: lavender;
+    color: #5757a0;
+    padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 5px solid #5757a0;
+}
+
+.menu li {
+    display: inline;
+}

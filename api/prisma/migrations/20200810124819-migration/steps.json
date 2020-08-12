@@ -1,0 +1,20 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteField",
+      "model": "Image",
+      "field": "item"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Image",
+      "field": "itemId"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Item",
+      "field": "images"
+    }
+  ]
+}
