@@ -18,7 +18,7 @@ model Image {
     id          Int     @id @default(autoincrement())
     title       String
     url         String
-    item        Item? @relation (fields: [itemId], references: [id])
+    item        Item? @relation(fields: [itemId], references: [id])
     itemId      Int?
 }
 

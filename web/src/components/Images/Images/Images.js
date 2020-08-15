@@ -62,6 +62,7 @@ const ImagesList = ({ images }) => {
           <tr>
             <th>Id</th>
             <th>Title</th>
+            <th>Item</th>
             <th>Url</th>
             <th>&nbsp;</th>
           </tr>
@@ -71,6 +72,7 @@ const ImagesList = ({ images }) => {
             <tr key={image.id}>
               <td>{truncate(image.id)}</td>
               <td>{truncate(image.title)}</td>
+              <td>{truncate(image.item?.name)}</td>
               <td>
                     <a href={image.url} target="_blank"><img src={thumbnail(image.url)} alt=""
                     style={{ maxWidth: '50px' }}/></a>

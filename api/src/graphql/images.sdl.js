@@ -3,11 +3,13 @@ export const schema = gql`
     id: Int!
     title: String!
     url: String!
+    item: Item
+    itemId: Int
   }
 
   type Query {
     images: [Image!]!
-    imageItems: [Image!]!
+    imageItems(itemId: Int!): [Image!]!
     image(id: Int!): Image!
   }
 
@@ -19,6 +21,7 @@ export const schema = gql`
   input UpdateImageInput {
     title: String
     url: String
+    itemId: Int
   }
 
   type Mutation {

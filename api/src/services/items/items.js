@@ -3,7 +3,8 @@ import { db } from 'src/lib/db'
 export const items = () => {
   return db.item.findMany({
       include: {
-          category: true
+          category: true,
+          images: true
       }
   })
 }

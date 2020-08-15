@@ -7,7 +7,7 @@ import {
   Submit,
 } from '@redwoodjs/forms'
 import { useState } from 'react'
-
+import ItemSelect from 'src/components/Items/SelectItemCell'
 import ReactFilestack from 'filestack-react'
 
 const ImageForm = (props) => {
@@ -15,11 +15,11 @@ const ImageForm = (props) => {
 
   const onSubmit = (data) => {
       const dataWithUrl = Object.assign(data, { url })
-      console.log(dataWithUrl)
+      dataWithUrl.itemId = parseInt(dataWithUrl.itemId)
+      console.log(JSON.stringify(dataWithUrl))
       props.onSave(dataWithUrl, props?.image?.id)
   }
     const onFileUpload = (response) => {
-        console.log(response.filesUploaded[0].url)
        setUrl(response.filesUploaded[0].url) 
     }
 
@@ -32,6 +32,8 @@ const ImageForm = (props) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
+        
+        <ItemSelect />
 
         <Label
           name="title"
@@ -48,6 +50,8 @@ const ImageForm = (props) => {
           validation={{ required: true }}
         />
         <FieldError name="title" className="rw-field-error" />
+
+        
 
         <ReactFilestack apikey={process.env.REDWOOD_ENV_FILESTACK_API_KEY} 
             onSuccess={onFileUpload}

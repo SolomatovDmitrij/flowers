@@ -31,6 +31,7 @@ export const Success = ({ image }) => {
   })
 
   const onSave = (input, id) => {
+      console.log('onSave', JSON.stringify(input))
     updateImage({ variables: { id, input } })
   }
 

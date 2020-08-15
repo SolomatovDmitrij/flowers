@@ -6,7 +6,9 @@ export const images = () => {
 
 export const imageItems = (itemId) => {
   return db.image.findMany(
-    where: { itemId }
+      {
+        where: { itemId: itemId }
+      }
   )
 }
 
@@ -18,13 +20,21 @@ export const image = ({ id }) => {
 
 export const createImage = ({ input }) => {
   return db.image.create({
-    data: input,
+    data: {
+        title:  input.title,
+        url:    input.url,
+        item: {}
+    },
   })
 }
 
 export const updateImage = ({ id, input }) => {
+    const { itemId, ...localVar } = input
+    console.log('input', JSON.stringify(input))
+    console.log('localVar', JSON.stringify(localVar))
+    console.log('itemId', itemId)
   return db.image.update({
-    data: input,
+      data: { ...localVar, item: { connect: { id: itemId } }},
     where: { id },
   })
 }
