@@ -1,0 +1,1 @@
+"message": "\nInvalid `prisma.image.create()` invocation in\n/home/node/redwood/flowers/api/src/services/images/images.js:22:19\n\n{\n  data: {\n    title: 'rose1',\n    url: 'https://',\n+   item: {\n+     create?: ItemCreateWithoutImagesInput,\n+     connect?: ItemWhereUniqueInput\n+   }\n  }\n}\n\nArgument item for data.item is missing.\n\nNote: Lines with + are required\n",
