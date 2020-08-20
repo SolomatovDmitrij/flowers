@@ -1,5 +1,5 @@
 import CategoriesLayout from 'src/layouts/CategoriesLayout'
-import CategoriesCell from 'src/components/Categories/CategoriesCell'
+import CategoriesCell from 'src/components/cells/CategoriesCell'
 
 const CategoriesPage = () => {
   return (

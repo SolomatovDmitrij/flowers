@@ -12,6 +12,10 @@ export const items = () => {
 export const item = ({ id }) => {
   return db.item.findOne({
     where: { id },
+      include: {
+          category: true,
+          images: true
+      }
   })
 }
 
@@ -45,4 +49,15 @@ export const deleteItem = ({ id }) => {
 }
 
 export const Item = {
+}
+
+export const items_by_category = ({ categoryId }) => {
+    return db.item.findMany({
+            where: {
+                category:  { id: categoryId }
+            },
+            include: {
+                images: true
+            }
+        })
 }

@@ -1,5 +1,5 @@
 import ImagesLayout from 'src/layouts/ImagesLayout'
-import EditImageCell from 'src/components/Images/EditImageCell'
+import EditImageCell from 'src/components/cells/EditImageCell'
 
 const EditImagePage = ({ id }) => {
   return (

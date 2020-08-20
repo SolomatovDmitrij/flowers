@@ -3,6 +3,13 @@ import { db } from 'src/lib/db'
 export const categories = () => {
   return db.category.findMany()
 }
+/*
+export const categories_plus_selected = ({selected_id}) => {
+  const data = { categories: db.category.findMany(), selected_id: selected_id }
+  console.log(JSON.stringify(data))
+  return data
+}
+*/
 
 export const category = ({ id }) => {
   return db.category.findOne({

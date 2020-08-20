@@ -1,5 +1,5 @@
 import CategoriesLayout from 'src/layouts/CategoriesLayout'
-import EditCategoryCell from 'src/components/Categories/EditCategoryCell'
+import EditCategoryCell from 'src/components/cells/EditCategoryCell'
 
 const EditCategoryPage = ({ id }) => {
   return (

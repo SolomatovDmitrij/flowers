@@ -27,6 +27,10 @@ model Item {
     name        String
     category    Category @relation( fields: [categoryId], references: [id] )
     categoryId  Int
+    size_h      Int @default(0)
+    size_w      Int @default(0)
+    price       Int @default(0)
+    description String?
     images      Image[] 
     createAt    DateTime @default(now())
 }

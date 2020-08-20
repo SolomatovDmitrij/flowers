@@ -1,5 +1,5 @@
 import ItemsLayout from 'src/layouts/ItemsLayout'
-import ItemsCell from 'src/components/Items/ItemsCell'
+import ItemsCell from 'src/components/cells/ItemsCell'
 
 const ItemsPage = () => {
   return (

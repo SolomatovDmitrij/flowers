@@ -1,5 +1,5 @@
 import ItemsLayout from 'src/layouts/ItemsLayout'
-import EditItemCell from 'src/components/Items/EditItemCell'
+import EditItemCell from 'src/components/cells/EditItemCell'
 
 const EditItemPage = ({ id }) => {
   return (

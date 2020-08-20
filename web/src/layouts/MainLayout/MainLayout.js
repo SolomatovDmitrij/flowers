@@ -1,5 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
-import FlowerCategoriesCell from 'src/components/Categories/FlowerCategoriesCell'
+import FlowerCategoriesCell from 'src/components/cells/FlowerCategoriesCell'
 
 const MainLayout = ({ children }) => {
   return (

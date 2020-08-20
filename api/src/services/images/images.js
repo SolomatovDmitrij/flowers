@@ -1,19 +1,25 @@
 import { db } from 'src/lib/db'
 
 export const images = () => {
-  return db.image.findMany()
+  return db.image.findMany({
+      include: { item: true }
+  })
 }
 
 export const imageItems = (itemId) => {
   return db.image.findMany(
       {
-        where: { itemId: itemId }
-      }
+          where: { itemId }
+      },
+    include {
+      item: true
+    }
   )
 }
 
 export const image = ({ id }) => {
   return db.image.findOne({
+    include: {item: true},
     where: { id },
   })
 }

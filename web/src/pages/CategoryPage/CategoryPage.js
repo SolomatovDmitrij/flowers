@@ -1,5 +1,5 @@
 import CategoriesLayout from 'src/layouts/CategoriesLayout'
-import CategoryCell from 'src/components/Categories/CategoryCell'
+import CategoryCell from 'src/components/cells/CategoryCell'
 
 const CategoryPage = ({ id }) => {
   return (
