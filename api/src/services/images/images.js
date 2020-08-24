@@ -6,14 +6,21 @@ export const images = () => {
   })
 }
 
-export const imageItems = (itemId) => {
+export const imageEmptyItems = () => {
   return db.image.findMany(
       {
-          where: { itemId }
+        where: { item: null },
+        include: { item: true }
       },
-    include {
-      item: true
-    }
+  )
+}
+
+export const imageItems = ({itemId}) => {
+  return db.image.findMany(
+      {
+        where: { item: {id: itemId}}, 
+        include: {item: true}
+      },
   )
 }
 
@@ -27,7 +34,6 @@ export const image = ({ id }) => {
 export const createImage = ({ input }) => {
   return db.image.create({
     data: {
-        title:  input.title,
         url:    input.url,
         item: {}
     },
@@ -36,9 +42,6 @@ export const createImage = ({ input }) => {
 
 export const updateImage = ({ id, input }) => {
     const { itemId, ...localVar } = input
-    console.log('input', JSON.stringify(input))
-    console.log('localVar', JSON.stringify(localVar))
-    console.log('itemId', itemId)
   return db.image.update({
       data: { ...localVar, item: { connect: { id: itemId } }},
     where: { id },

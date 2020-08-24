@@ -1,21 +1,17 @@
-import {
-  SelectField,
-  Form,
-  FormError,
-  FieldError,
-  Label,
-  TextField,
-  NumberField,
-  Submit,
-} from '@redwoodjs/forms'
+import { SelectField, Form, FormError, FieldError, Label, TextField, NumberField, Submit, } from '@redwoodjs/forms'
 import SelectCategoriesCell from 'src/components/cells/SelectCategoriesCell'
 import ImageOnly from 'src/components/scaffold/Images/ImageOnly'
+import ImageSelect from 'src/components/ImageSelect'
+import { useState } from 'react'
 
 const ItemForm = (props) => {
   const onSubmit = (data) => {
+    console.log(data)
     props.onSave(data, props?.item?.id)
   }
 
+  const [images, set_images] = useState(props.item?.images)
+  //console.log(JSON.stringify(props))
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSubmit} error={props.error}>
@@ -117,7 +113,7 @@ const ItemForm = (props) => {
         </Label>
         <TextField 
             name="price"
-            type="number"
+            dataType="Int"
             defaultValue={props.item?.price}
             className="rw-input"
             errorClassName="rw-input rw-input-error"
@@ -129,8 +125,10 @@ const ItemForm = (props) => {
           className="rw-label"
           errorClassName="rw-label rw-label-error"
       >Картинки</Label>
-        <ImageOnly images={props.item?.images}/>
 
+        <ImageSelect images={images} set_images={set_images} />
+
+      <TextField name="images" className="input" dataType="Json" defaultValue={JSON.stringify(props.item?.images)} />
 {/* Submit button */}
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

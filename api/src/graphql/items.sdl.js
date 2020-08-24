@@ -27,9 +27,14 @@ export const schema = gql`
     price: Int
   }
 
+  input Ids {
+    id: Int
+  }
+
   input UpdateItemInput {
     name: String
     categoryId: Int
+    images: [Ids]
     description: String
     size_h: Int
     size_w: Int

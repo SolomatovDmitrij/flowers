@@ -34,24 +34,6 @@ const ImageForm = (props) => {
         />
         <ItemSelect current_item={props?.image?.itemId}/>
 
-        <Label
-          name="title"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Title
-        </Label>
-        <TextField
-          name="title"
-          defaultValue={props.image?.title}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="title" className="rw-field-error" />
-
-        
-
         <ReactFilestack apikey={process.env.REDWOOD_ENV_FILESTACK_API_KEY} 
             onSuccess={onFileUpload}
             componentDisplayMode={{ type: 'immediate' }}

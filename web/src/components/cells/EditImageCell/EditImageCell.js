@@ -6,7 +6,6 @@ export const QUERY = gql`
   query FIND_IMAGE_BY_ID($id: Int!) {
     image: image(id: $id) {
       id
-      title
       url
     }
   }

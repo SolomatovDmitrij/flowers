@@ -59,10 +59,6 @@ const Image = ({ image }) => {
               <td>{image.id}</td>
             </tr>
             <tr>
-              <th>Title</th>
-              <td>{image.title}</td>
-            </tr>
-            <tr>
               <th>Url</th>
               <td>{image.url}</td>
             </tr>

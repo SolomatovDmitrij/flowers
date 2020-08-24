@@ -31,10 +31,13 @@ export const createItem = ({ input }) => {
 }
 
 export const updateItem = ({ id, input }) => {
-    const { categoryId, ...localFields } = input
+    const { categoryId, images, ...localFields } = input
     const data = {
         ...localFields,
-        category: { connect: { id: categoryId } }
+        category: { connect: { id: categoryId } },
+        images: {
+          connect: images
+        },
     }
   return db.item.update({
     data,

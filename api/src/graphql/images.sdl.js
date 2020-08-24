@@ -1,7 +1,6 @@
 export const schema = gql`
   type Image {
     id: Int!
-    title: String!
     url: String!
     item: Item
     itemId: Int
@@ -10,16 +9,15 @@ export const schema = gql`
   type Query {
     images: [Image!]!
     imageItems(itemId: Int!): [Image!]!
+    imageEmptyItems: [Image!]!
     image(id: Int!): Image!
   }
 
   input CreateImageInput {
-    title: String!
     url: String!
   }
 
   input UpdateImageInput {
-    title: String
     url: String
     itemId: Int
   }

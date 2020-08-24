@@ -11,10 +11,11 @@ export const QUERY = gql`
       description
       size_h
       size_w
+      price
       createAt
       images {
-          url
-          title
+        id
+        url
       }  
     }
   }
@@ -42,6 +43,9 @@ export const Success = ({ item }) => {
     const castInput = Object.assign(input, {
       categoryId: parseInt(input.categoryId),
     })
+    castInput.images = castInput.images.map((elem)=> elem.id)
+    
+    console.log(JSON.stringify(castInput))
     updateItem({ variables: { id, input: castInput } })
   }
 

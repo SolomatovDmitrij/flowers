@@ -6,7 +6,6 @@ export const QUERY = gql`
   query IMAGES {
     images {
         id
-        title
         url
         item {
             name

@@ -1,5 +1,6 @@
 import { useMutation, useFlash } from '@redwoodjs/web'
 import { Link, routes } from '@redwoodjs/router'
+import thumbnail from 'src/common/function.js'
 
 const DELETE_IMAGE_MUTATION = gql`
   mutation DeleteImageMutation($id: Int!) {
@@ -48,13 +49,13 @@ const ImagesList = ({ images }) => {
       deleteImage({ variables: { id }, refetchQueries: ['IMAGES'] })
     }
   }
-
+/*
     const thumbnail = (url) => {
         const parts = url.split('/')
         parts.splice(3, 0, "resize=width:100")
         return parts.join('/')
     }
-
+*/
   return (
     <div className="rw-segment rw-table-wrapper-responsive">
       <table className="rw-table">

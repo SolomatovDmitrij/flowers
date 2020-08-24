@@ -1,8 +1,8 @@
 import { render, screen } from '@redwoodjs/testing'
 
-import { Loading, Empty, Failure, Success } from './ImageItemsCell'
+import { Loading, Empty, Failure, Success } from './EmptyItemImagesCell'
 
-describe('ImageItemsCell', () => {
+describe('EmptyItemImagesCell', () => {
   it('Loading renders successfully', () => {
     render(<Loading />)
     // Use screen.debug() to see output.
@@ -21,10 +21,12 @@ describe('ImageItemsCell', () => {
 
   it('Success renders successfully', () => {
     render(
-      <Success userExample={{ imageItems: { objectKey: 'objectValue' } }} />
+      <Success
+        userExample={{ emptyItemImages: { objectKey: 'objectValue' } }}
+      />
     )
     expect(
-      screen.queryByText('{"imageItems":{"objectKey":"objectValue"}}')
+      screen.queryByText('{"emptyItemImages":{"objectKey":"objectValue"}}')
     ).toBeInTheDocument()
   })
 })
