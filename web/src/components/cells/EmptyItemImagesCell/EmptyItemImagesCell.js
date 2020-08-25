@@ -1,9 +1,8 @@
-import ImageOnly from 'src/components/scaffold/Images/ImageOnly'
+import ImageSelectList from 'src/components/My/ImageSelectList'
 
 export const QUERY = gql`
-  query EmptyItemImagesQuery {
-    imageEmptyItems {
-      title
+  query EmptyItemImagesQuery($exclude: [Int]!, $connect: [Int]!) {
+    imageEmptyItems(exclude: $exclude, connect: $connect) {
       id
       url
     }
@@ -16,8 +15,8 @@ export const Empty = () => <div>Empty</div>
 
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
-export const Success = ({ imageEmptyItems, delete_img }) => {
+export const Success = ({ imageEmptyItems, img_func }) => {
   return (
-    <ImageOnly images={imageEmptyItems} delete_img={delete_img}/>
+    <ImageSelectList images={imageEmptyItems} img_func={img_func} label="Не привязанные картинки"/>
   )
 }

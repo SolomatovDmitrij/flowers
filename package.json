@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@redwoodjs/core": "^0.15.3",
+    "coffeescript": "^2.5.1",
     "netlify-plugin-prisma-provider": "^0.3.0"
   },
   "eslintConfig": {

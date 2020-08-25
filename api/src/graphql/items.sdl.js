@@ -34,7 +34,8 @@ export const schema = gql`
   input UpdateItemInput {
     name: String
     categoryId: Int
-    images: [Ids]
+    connect_img: [Ids]
+    disconnect_img: [Ids]
     description: String
     size_h: Int
     size_w: Int
@@ -43,7 +44,7 @@ export const schema = gql`
 
   type Mutation {
     createItem(input: CreateItemInput!): Item!
-    updateItem(id: Int!, input: UpdateItemInput!): Item!
+    updateItem(id: Int!, input: UpdateItemInput): Item!
     deleteItem(id: Int!): Item!
   }
 `

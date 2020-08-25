@@ -8,8 +8,8 @@ export const schema = gql`
 
   type Query {
     images: [Image!]!
-    imageItems(itemId: Int!): [Image!]!
-    imageEmptyItems: [Image!]!
+    imageItems(itemId: Int!, exclude: [Int]!, connect: [Int]!): [Image!]!
+    imageEmptyItems(exclude: [Int]!, connect: [Int]!): [Image!]!
     image(id: Int!): Image!
   }
 

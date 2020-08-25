@@ -31,12 +31,13 @@ export const createItem = ({ input }) => {
 }
 
 export const updateItem = ({ id, input }) => {
-    const { categoryId, images, ...localFields } = input
+    const { categoryId, connect_img, disconnect_img, ...localFields } = input
     const data = {
         ...localFields,
         category: { connect: { id: categoryId } },
         images: {
-          connect: images
+          connect: connect_img,
+          disconnect: disconnect_img,
         },
     }
   return db.item.update({

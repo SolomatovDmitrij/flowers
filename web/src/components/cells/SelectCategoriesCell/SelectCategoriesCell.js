@@ -37,7 +37,7 @@ export const Success = ({ categories, selected_id }) => {
   return (
     <SelectField id="categoryId" name="categoryId" defaultValue={selected_id}>
       {categories.map((category) => (
-            <option value={category.id}>{category.name}</option>
+            <option key={category.id} value={category.id}>{category.name}</option>
         ) )}
     </SelectField>
   )

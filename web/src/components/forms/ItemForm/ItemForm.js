@@ -1,17 +1,18 @@
 import { SelectField, Form, FormError, FieldError, Label, TextField, NumberField, Submit, } from '@redwoodjs/forms'
 import SelectCategoriesCell from 'src/components/cells/SelectCategoriesCell'
-import ImageOnly from 'src/components/scaffold/Images/ImageOnly'
-import ImageSelect from 'src/components/ImageSelect'
 import { useState } from 'react'
+import ImageDash from 'src/components/My/ImageDash'
 
 const ItemForm = (props) => {
   const onSubmit = (data) => {
-    console.log(data)
+    data.connect_img = data.images_change.connect_img.map((elem) => ({id: elem}))
+    if(data.images_change.disconnect_img.length > 0) 
+      data.disconnect_img = data.images_change.disconnect_img.map((elem) => ({id: elem}))
+    delete data.images_change
+    console.log(JSON.stringify(data))
     props.onSave(data, props?.item?.id)
   }
 
-  const [images, set_images] = useState(props.item?.images)
-  //console.log(JSON.stringify(props))
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSubmit} error={props.error}>
@@ -121,15 +122,16 @@ const ItemForm = (props) => {
         <FieldError name="price" className="rw-field-error" />
 
 {/* Images */}
-      <Label name="images"
+      <Label name="images_change"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
       >Картинки</Label>
+      <ImageDash itemId={props.item?.id} images={props.item?.images}/>
 
-        <ImageSelect images={images} set_images={set_images} />
-
-      <TextField name="images" className="input" dataType="Json" defaultValue={JSON.stringify(props.item?.images)} />
-{/* Submit button */}
+  {/*
+      <TextField name="images" className="input" dataType="Json" defaultValue={JSON.stringify(connect_img)} />
+      
+ Submit button */}
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save

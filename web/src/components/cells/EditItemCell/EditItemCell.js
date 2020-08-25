@@ -39,13 +39,13 @@ export const Success = ({ item }) => {
     },
   })
 
-  const onSave = (input, id) => {
+  const onSave = (input, id ) => {
     const castInput = Object.assign(input, {
       categoryId: parseInt(input.categoryId),
     })
-    castInput.images = castInput.images.map((elem)=> elem.id)
+//    castInput.images = castInput.images.map((elem)=> elem.id)
     
-    console.log(JSON.stringify(castInput))
+//    console.log(JSON.stringify(castInput))
     updateItem({ variables: { id, input: castInput } })
   }
 

@@ -6,19 +6,40 @@ export const images = () => {
   })
 }
 
-export const imageEmptyItems = () => {
+export const imageEmptyItems = ({exclude, connect}) => {
   return db.image.findMany(
       {
-        where: { item: null },
+        where: {
+          OR: [
+            {
+              AND: [
+                {item: null},
+                {NOT: {id: {in: exclude}}},
+              ]
+            },
+            { id: {in: connect} }
+          ]
+        },
         include: { item: true }
       },
   )
 }
 
-export const imageItems = ({itemId}) => {
+export const imageItems = ({itemId, exclude, connect}) => {
   return db.image.findMany(
       {
-        where: { item: {id: itemId}}, 
+        where: { 
+          OR: [
+            {
+              AND: [
+               {item: {id: itemId}},
+               {NOT: { id: { in: exclude }}}
+            ]},
+            {
+              id: { in: connect }
+            }
+          ]
+        }, 
         include: {item: true}
       },
   )
