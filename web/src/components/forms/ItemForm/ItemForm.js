@@ -2,6 +2,8 @@ import { SelectField, Form, FormError, FieldError, Label, TextField, NumberField
 import SelectCategoriesCell from 'src/components/cells/SelectCategoriesCell'
 import { useState } from 'react'
 import ImageDash from 'src/components/My/ImageDash'
+import ReactFilestack from 'filestack-react'
+import { useMutation } from '@redwoodjs/web'
 
 const ItemForm = (props) => {
   const onSubmit = (data) => {
@@ -9,8 +11,12 @@ const ItemForm = (props) => {
     if(data.images_change.disconnect_img.length > 0) 
       data.disconnect_img = data.images_change.disconnect_img.map((elem) => ({id: elem}))
     delete data.images_change
-    console.log(JSON.stringify(data))
     props.onSave(data, props?.item?.id)
+  }
+
+  const onSuccess = (result) => {
+    console.log(JSON.stringify(result))
+//    save_images_to_db(result.filesUploaded)
   }
 
   return (
@@ -127,9 +133,8 @@ const ItemForm = (props) => {
           errorClassName="rw-label rw-label-error"
       >Картинки</Label>
       <ImageDash itemId={props.item?.id} images={props.item?.images}/>
-
+      
   {/*
-      <TextField name="images" className="input" dataType="Json" defaultValue={JSON.stringify(connect_img)} />
       
  Submit button */}
         <div className="rw-button-group">

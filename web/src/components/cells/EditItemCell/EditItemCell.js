@@ -31,11 +31,9 @@ const UPDATE_ITEM_MUTATION = gql`
 export const Loading = () => <div>Loading...</div>
 
 export const Success = ({ item }) => {
-  const { addMessage } = useFlash()
   const [updateItem, { loading, error }] = useMutation(UPDATE_ITEM_MUTATION, {
     onCompleted: () => {
       navigate(routes.items())
-      addMessage('Item updated.', { classes: 'rw-flash-success' })
     },
   })
 
@@ -43,9 +41,6 @@ export const Success = ({ item }) => {
     const castInput = Object.assign(input, {
       categoryId: parseInt(input.categoryId),
     })
-//    castInput.images = castInput.images.map((elem)=> elem.id)
-    
-//    console.log(JSON.stringify(castInput))
     updateItem({ variables: { id, input: castInput } })
   }
 

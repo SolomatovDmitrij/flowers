@@ -46,6 +46,20 @@ export const updateItem = ({ id, input }) => {
   })
 }
 
+export const insertImages = ({ id, urls }) => {
+  return db.item.update({
+    where: {id},
+    data: {
+      images: {
+        create: urls
+      }
+    },
+    include: {
+      images: true
+    }
+  })
+}
+
 export const deleteItem = ({ id }) => {
   return db.item.delete({
     where: { id },

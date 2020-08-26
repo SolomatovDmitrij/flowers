@@ -17,19 +17,18 @@ export const QUERY = gql`
   } 
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <div></div>
 
-export const Empty = () => <div>Empty</div>
+export const Empty = () => <div></div>
 
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ items_by_category }) => {
-//    return JSON.stringify(items_by_category)
     
   return (
       <div className="catalog-items">
         {items_by_category.map( ( item ) => ( 
-            <CatalogItem item={item} />
+            <CatalogItem key={item.id} item={item} />
         ) )}
       </div>
   )

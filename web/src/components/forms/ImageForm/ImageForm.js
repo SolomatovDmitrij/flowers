@@ -15,8 +15,6 @@ const ImageForm = (props) => {
 
   const onSubmit = (data) => {
       const dataWithUrl = Object.assign(data, { url })
-      //dataWithUrl.itemId = parseInt(dataWithUrl.itemId)
-      //console.log(JSON.stringify(dataWithUrl))
       props.onSave(dataWithUrl, props?.image?.id)
   }
     const onFileUpload = (response) => {
@@ -32,21 +30,38 @@ const ImageForm = (props) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
+    {/*
         <ItemSelect current_item={props?.image?.itemId}/>
+    */}
+    <ReactFilestack
+      apikey={process.env.REDWOOD_ENV_FILESTACK_API_KEY}
+      onSuccess={onFileUpload}
+      componentDisplayMode={{ type: 'immediate' }}
+      actionOptions={{ displayMode: 'inline', container: 'picker' }}
+    />
+    <div
+      id="picker"
+      style={{
+        marginTop: '2rem',
+        height: '20rem',
+        display: url ? 'none' : 'block',
+      }}
+    ></div>
 
-        <ReactFilestack apikey={process.env.REDWOOD_ENV_FILESTACK_API_KEY} 
-            onSuccess={onFileUpload}
-            componentDisplayMode={{ type: 'immediate' }}
-            actionOptions={{ displayMode: 'inline', container: 'picker' }}
-        />  
-        <div id="picker" style={{ marginTop:'2rem', height:'20rem',
-            display: url ? 'none' : 'block'}}></div>
-        { url && <div><img src={url} style={{ margin: '2rem 0', display: 'inline' }} />
-                <a href="#" onClick={ () => setUrl(null) } style={{ display: 'inline' }} 
-                    className ="rw-button rw-button-blue"
-                >Поменять картинку</a></div>
-             }
-        
+    {url && (
+      <div>
+      <img src={url} style={{ display: 'block', margin: '2rem 0' }} />
+      <a
+      href="#"
+      onClick={() =>
+        setUrl(null)}
+      className="bg-blue-600 text-white hover:bg-blue-700 text-xs rounded px-4 py-2 uppercase font-semibold tracking-wide"
+      >
+      Replace Image
+      </a>
+      </div>
+    )}
+          
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save

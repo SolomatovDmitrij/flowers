@@ -31,6 +31,10 @@ export const schema = gql`
     id: Int
   }
 
+  input Urls {
+    url: String
+  }
+
   input UpdateItemInput {
     name: String
     categoryId: Int
@@ -45,6 +49,7 @@ export const schema = gql`
   type Mutation {
     createItem(input: CreateItemInput!): Item!
     updateItem(id: Int!, input: UpdateItemInput): Item!
+    insertImages(id: Int!, urls: [Urls]): Item!
     deleteItem(id: Int!): Item!
   }
 `

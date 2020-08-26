@@ -6,8 +6,8 @@
     "defaults"
   ],
   "dependencies": {
-    "@redwoodjs/router": "^0.15.3",
-    "@redwoodjs/web": "^0.15.3",
+    "@redwoodjs/router": "^0.16.0",
+    "@redwoodjs/web": "^0.16.0",
     "filestack-react": "^3.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
