@@ -1,4 +1,5 @@
 import { db } from 'src/lib/db'
+import { requireAuth } from 'src/lib/auth'
 
 export const items = () => {
   return db.item.findMany({
@@ -20,6 +21,7 @@ export const item = ({ id }) => {
 }
 
 export const createItem = ({ input }) => {
+  requireAuth() 
     const { categoryId, ...localFields } = input
     const data = {
         ...localFields,
@@ -31,8 +33,9 @@ export const createItem = ({ input }) => {
 }
 
 export const updateItem = ({ id, input }) => {
-    const { categoryId, connect_img, disconnect_img, ...localFields } = input
-    const data = {
+  requireAuth() 
+  const { categoryId, connect_img, disconnect_img, ...localFields } = input
+  const data = {
         ...localFields,
         category: { connect: { id: categoryId } },
         images: {
@@ -47,6 +50,7 @@ export const updateItem = ({ id, input }) => {
 }
 
 export const insertImages = ({ id, urls }) => {
+  requireAuth() 
   return db.item.update({
     where: {id},
     data: {
@@ -61,6 +65,7 @@ export const insertImages = ({ id, urls }) => {
 }
 
 export const deleteItem = ({ id }) => {
+  requireAuth() 
   return db.item.delete({
     where: { id },
   })

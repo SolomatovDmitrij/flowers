@@ -1,3 +1,4 @@
+import { requireAuth } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 
 export const images = () => {
@@ -53,6 +54,7 @@ export const image = ({ id }) => {
 }
 
 export const createImage = ({ input }) => {
+  requireAuth()
   return db.image.create({
     data: {
         url:    input.url,
@@ -62,7 +64,8 @@ export const createImage = ({ input }) => {
 }
 
 export const updateImage = ({ id, input }) => {
-    const { itemId, ...localVar } = input
+  requireAuth() 
+  const { itemId, ...localVar } = input
   return db.image.update({
       data: { ...localVar, item: { connect: { id: itemId } }},
     where: { id },
@@ -70,6 +73,7 @@ export const updateImage = ({ id, input }) => {
 }
 
 export const deleteImage = ({ id }) => {
+  requireAuth() 
   return db.image.delete({
     where: { id },
   })

@@ -1,15 +1,9 @@
 import { db } from 'src/lib/db'
+import { requireAuth } from 'src/lib/auth'
 
 export const categories = () => {
   return db.category.findMany()
 }
-/*
-export const categories_plus_selected = ({selected_id}) => {
-  const data = { categories: db.category.findMany(), selected_id: selected_id }
-  console.log(JSON.stringify(data))
-  return data
-}
-*/
 
 export const category = ({ id }) => {
   return db.category.findOne({
@@ -18,12 +12,14 @@ export const category = ({ id }) => {
 }
 
 export const createCategory = ({ input }) => {
+  requireAuth()
   return db.category.create({
     data: input,
   })
 }
 
 export const updateCategory = ({ id, input }) => {
+  requireAuth()
   return db.category.update({
     data: input,
     where: { id },
@@ -31,6 +27,7 @@ export const updateCategory = ({ id, input }) => {
 }
 
 export const deleteCategory = ({ id }) => {
+  requireAuth()
   return db.category.delete({
     where: { id },
   })
