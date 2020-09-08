@@ -22,10 +22,11 @@ export const item = ({ id }) => {
 
 export const createItem = ({ input }) => {
   requireAuth() 
-    const { categoryId, ...localFields } = input
+    const { categoryId, connect_img, ...localFields } = input
     const data = {
         ...localFields,
-        category: { connect: { id: categoryId } }
+        category: { connect: { id: categoryId }},
+        images: { connect: connect_img, }  
     }
   return db.item.create({
       data

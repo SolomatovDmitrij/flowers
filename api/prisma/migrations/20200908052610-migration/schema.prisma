@@ -1,0 +1,35 @@
+datasource DS {
+  provider = ["sqlite", "postgresql"]
+  url = "***"
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+model Category {
+    id          Int     @id @default(autoincrement())
+    name        String
+    items       Item[]
+}
+
+model Image {
+    id          Int     @id @default(autoincrement())
+    url         String
+    item        Item? @relation(fields: [itemId], references: [id])
+    itemId      Int?
+}
+
+model Item {
+    id          Int     @id @default(autoincrement())
+    name        String
+    category    Category @relation( fields: [categoryId], references: [id] )
+    categoryId  Int
+    size_h      Int @default(0)
+    size_w      Int @default(0)
+    price       Int @default(0)
+    description String?
+    images      Image[] 
+    createAt    DateTime @default(now())
+}

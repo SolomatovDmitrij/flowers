@@ -25,6 +25,7 @@ export const schema = gql`
     size_h: Int
     size_w: Int
     price: Int
+    connect_img: [Ids]
   }
 
   input Ids {
